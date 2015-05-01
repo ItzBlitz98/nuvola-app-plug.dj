@@ -1,7 +1,7 @@
 Plug.dj for Nuvola Player 3
 ===============================
 
-Integration of Plug,dj into your linux desktop via
+Integration of [plug.dj](https://plug.dj) into your linux desktop via
 [Nuvola Player](https://github.com/tiliado/nuvolaplayer).
 
 Still needs some work but is functional.
