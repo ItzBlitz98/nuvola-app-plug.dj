@@ -43,7 +43,7 @@
   // Loads the KEXP flowplayer API
   WebApp.startApi = function() {
 
-    if (window.API.getMedia()) {
+    if (typeof(window.API.getMedia()) !== 'undefined') {
       this.update();
     } else {
       setTimeout(this.startApi.bind(this), 100);
@@ -53,7 +53,7 @@
 
   // Extract data from the web page
   WebApp.update = function() {
-    if (window.API.getMedia()) {
+    if (typeof(window.API.getMedia()) !== 'undefined') {
       // Scrape track info
       var track = window.API.getMedia().title;
       var artist = window.API.getMedia().author;
