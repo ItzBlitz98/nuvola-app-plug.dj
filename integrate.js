@@ -43,7 +43,7 @@
   // Loads the KEXP flowplayer API
   WebApp.startApi = function() {
 
-    if (typeof(window.API.getMedia()) !== 'undefined') {
+    if (document.getElementById("yt-frame")) {
       this.update();
     } else {
       setTimeout(this.startApi.bind(this), 100);
@@ -53,7 +53,7 @@
 
   // Extract data from the web page
   WebApp.update = function() {
-    if (typeof(window.API.getMedia()) !== 'undefined') {
+    if (document.getElementById("yt-frame")) {
       // Scrape track info
       var track = window.API.getMedia().title;
       var artist = window.API.getMedia().author;
@@ -68,10 +68,10 @@
       player.setTrack(track);
     } else {
       var track = {
-        title: "",
-        artist: "",
-        album: "",
-        artLocation: ""
+        title: null,
+        artist: null,
+        album: null,
+        artLocation: null
       };
     }
 
