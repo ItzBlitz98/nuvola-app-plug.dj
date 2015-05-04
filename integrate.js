@@ -1,6 +1,6 @@
-"use strict";
-
 (function(Nuvola) {
+
+  "use strict";
 
   // Create media player component
   var player = Nuvola.$object(Nuvola.MediaPlayer);
@@ -22,7 +22,7 @@
     else
       document.addEventListener("DOMContentLoaded",
         this._onPageReady.bind(this));
-  }
+  };
 
   // Page is ready for magic
   WebApp._onPageReady = function() {
@@ -38,7 +38,7 @@
 
     // Configure API hooks
     this.startApi();
-  }
+  };
 
   // Loads the KEXP flowplayer API
   WebApp.startApi = function() {
@@ -48,18 +48,26 @@
     } else {
       setTimeout(this.startApi.bind(this), 100);
     }
-  }
+  };
 
 
   // Extract data from the web page
   WebApp.update = function() {
+    var track,
+        artist,
+        album,
+        artLocation,
+        state;
+
+
     if (document.getElementById("yt-frame")) {
+
       // Scrape track info
-      var track = window.API.getMedia().title;
-      var artist = window.API.getMedia().author;
-      var album = "";
-      var art = "http:" + window.API.getMedia().image;
-      var track = {
+      track = window.API.getMedia().title;
+      artist = window.API.getMedia().author;
+      album = "";
+      art = "http:" + window.API.getMedia().image;
+      track = {
         title: track,
         artist: artist,
         album: album,
@@ -67,7 +75,7 @@
       };
       player.setTrack(track);
     } else {
-      var track = {
+      track = {
         title: null,
         artist: null,
         album: null,
@@ -76,16 +84,16 @@
     }
 
     if (document.getElementById("playback-controls").classList.contains("snoozed")) {
-      var state = PlaybackState.PAUSED;
+      state = PlaybackState.PAUSED;
     } else {
-      var state = PlaybackState.PLAYING;
+      state = PlaybackState.PLAYING;
     }
 
     player.setPlaybackState(state);
 
     // Schedule the next update
     setTimeout(this.update.bind(this), 500);
-  }
+  };
 
   // Handler of playback actions
   WebApp._onActionActivated = function(emitter, name, param) {
@@ -124,7 +132,7 @@
           "message": "Not supported."
         };
     }
-  }
+  };
 
   WebApp.start();
 })(this);
