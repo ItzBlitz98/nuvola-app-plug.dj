@@ -8,5 +8,6 @@
 	"api_major": 3,
 	"api_minor": 0,
 	"categories": "AudioVideo;Audio;",
-	"home_url": "https://plug.dj"
+	"home_url": "https://plug.dj",
+	"allowed_uri": "https?://plug\\.dj"
 }
